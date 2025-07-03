@@ -17,6 +17,7 @@ import {
 } from "../components/ui/Select";
 import { Mail, Phone, MapPin, Clock, MessageSquare, Send } from "lucide-react";
 import { Link } from "react-router-dom";
+import ContactForm from "../components/ui/ContactForm";
 
 const Contact = () => {
   return (
@@ -193,87 +194,7 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
-                  <form className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name</Label>
-                        <Input
-                          id="firstName"
-                          placeholder="Enter your first name"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name</Label>
-                        <Input
-                          id="lastName"
-                          placeholder="Enter your last name"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email address"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number (Optional)</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a subject" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="general">
-                            General Inquiry
-                          </SelectItem>
-                          <SelectItem value="support">
-                            Technical Support
-                          </SelectItem>
-                          <SelectItem value="partnership">
-                            Partnership
-                          </SelectItem>
-                          <SelectItem value="fundraiser">
-                            Start a Fundraiser
-                          </SelectItem>
-                          <SelectItem value="donation">
-                            Donation Help
-                          </SelectItem>
-                          <SelectItem value="media">Media Inquiry</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us how we can help you..."
-                        className="min-h-[120px]"
-                        required
-                      />
-                    </div>
-
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 text-lg flex items-center justify-center gap-2">
-                      <Send className="w-5 h-5" />
-                      Send Message
-                    </Button>
-                  </form>
+                 <ContactForm/>
                 </CardContent>
               </Card>
             </div>

@@ -63,8 +63,8 @@ const HeroWithSlider = () => {
       </button>
 
       {/* Foreground Content */}
-      <div className="relative z-10 container mx-auto text-center max-w-4xl text-white">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
+      <div className="relative z-10  container mx-auto text-center max-w-4xl text-white">
+        <h1 className="text-4xl -lime-400 md:text-6xl font-bold mb-6">
           Great futures are built
           <br />
           with a small charity
@@ -74,12 +74,12 @@ const HeroWithSlider = () => {
           charity is a more easy way
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-lg">
+          <Button className=" bg-lime-400 text-black hover:bg-gray-200 px-8 py-3 text-lg">
             Donate now
           </Button>
           <Button
             variant="outline"
-            className="flex items-center gap-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg"
+            className="flex items-center gap-2 border-white text-black px-8 py-3 text-lg"
           >
             <Play className="w-5 h-5" />
             Watch Video

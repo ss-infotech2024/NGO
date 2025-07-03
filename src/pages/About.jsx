@@ -22,7 +22,6 @@ const About = () => {
           delay: i * 0.1,
           scrollTrigger: {
             trigger: el,
-            start: "top 85%",
           },
         });
       });
