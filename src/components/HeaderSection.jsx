@@ -28,6 +28,8 @@ const HeaderSection = () => {
                   : "text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200"
               }
             >
+
+            
               Home
             </NavLink>
             <NavLink
