@@ -11,43 +11,12 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
   const aboutRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray(".fade-in").forEach((el, i) => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 50,
-          duration: 0.7,
-          ease: "power2.out",
-          delay: i * 0.1,
-          scrollTrigger: {
-            trigger: el,
-          },
-        });
-      });
-    }, aboutRef);
 
-    return () => ctx.revert();
-  }, []);
 
   return (
     <div ref={aboutRef} className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b bg-white sticky top-0 z-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link to="/" className="text-xl font-bold text-green-600">
-              danapaani
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-green-600 font-medium">Home</Link>
-              <Link to="/about" className="text-green-600 font-medium border-b-2 border-green-600">About</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-green-600 font-medium">Contact</Link>
-            </nav>
-            <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6">Join/Giving</Button>
-          </div>
-        </div>
-      </header>
+     
 
       {/* Hero */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-lime-50">
@@ -107,7 +76,15 @@ const About = () => {
               <p>We now serve 120,000+ people and continue to grow as a beacon of kindness and human connection.</p>
             </div>
           </div>
-          <div className="bg-gray-200 rounded-lg h-64 lg:h-80 fade-in"></div>
+          <div  className="bg-gray-200 rounded-lg h-64 lg:h-80 fade-in">
+
+          <img
+          src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Team Member 1"
+          className=" rounded-lg mx-auto mb-4 object-cover"
+        />
+
+          </div>
         </div>
       </section>
 

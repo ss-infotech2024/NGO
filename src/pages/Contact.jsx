@@ -23,46 +23,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b bg-white sticky top-0 z-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Link to="/" className="text-xl font-bold text-green-600">
-                danapaani
-              </Link>
-            </div>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link
-                to="/"
-                className="text-gray-700 hover:text-green-600 font-medium"
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                className="text-gray-700 hover:text-green-600 font-medium"
-              >
-                About
-              </Link>
-              {/* <a
-                href="#"
-                className="text-gray-700 hover:text-green-600 font-medium"
-              >
-                Resources
-              </a> */}
-              <Link
-                to="/contact"
-                className="text-green-600 font-medium border-b-2 border-green-600"
-              >
-                Contact
-              </Link>
-            </nav>
-            <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6">
-              Join/Giving
-            </Button>
-          </div>
-        </div>
-      </header>
+     
 
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-lime-50">

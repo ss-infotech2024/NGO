@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const events = [
   {
     title: "Slum Food Distribution Drive",
-    image: "https://thechetna.org/wp-content/uploads/2021/07/FB_IMG_1588736839003.jpg",
+    image: "https://tse2.mm.bing.net/th/id/OIP.2RnzUo8gVoLfg4SnIhCl5gHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
   },
   {
     title: "Health Support for the Underprivileged",

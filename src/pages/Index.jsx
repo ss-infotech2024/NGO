@@ -19,8 +19,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import HeroWithSlider from "../components/ui/HeorWithSlider";
-import { Header } from "@radix-ui/react-accordion";
-import HeaderSection from "../components/HeaderSection";
 import EventsSection from "../components/ui/EventsSection";
 import MarqueeScroll from "../components/ui/MarqueeScroll";
 
@@ -28,7 +26,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-<HeaderSection/>
       {/* Hero Section */}
       <HeroWithSlider/>
 
