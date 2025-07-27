@@ -26,7 +26,8 @@ const Contact = () => {
      
 
       {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-lime-50">
+      <section className="mt-14 sm:mx-14 mx-0  sm:rounded-xl rounded-none  bg-green-600 py-20 sm:px-6 lg:px-8">
+
         <div className="container mx-auto text-center max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             Get in Touch

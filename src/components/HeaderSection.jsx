@@ -7,6 +7,16 @@ import logo from "../assets/Logo.png";
 const HeaderSection = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const navLinkStyle = ({ isActive }) =>
+    isActive
+      ? "text-green-600 font-medium border-b-2 border-green-600"
+      : "text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200";
+
+  const mobileNavLinkStyle = ({ isActive }) =>
+    isActive
+      ? "block text-green-600 font-medium border-b-2 border-green-600"
+      : "block text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200";
+
   return (
     <header className="border-b bg-white sticky top-0 z-50 rounded-b-lg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,39 +29,10 @@ const HeaderSection = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                isActive
-                  ? "text-green-600 font-medium border-b-2 border-green-600"
-                  : "text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200"
-              }
-            >
-
-            
-              Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-green-600 font-medium border-b-2 border-green-600"
-                  : "text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200"
-              }
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-green-600 font-medium border-b-2 border-green-600"
-                  : "text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200"
-              }
-            >
-              Services
-            </NavLink>
+            <NavLink to="/" end className={navLinkStyle}>Home</NavLink>
+            <NavLink to="/about" className={navLinkStyle}>About</NavLink>
+            <NavLink to="/services" className={navLinkStyle}>Services</NavLink>
+            <NavLink to="/gallery" className={navLinkStyle}>Gallery</NavLink>
           </nav>
 
           {/* CTA Button (Desktop Only) */}
@@ -85,40 +66,10 @@ const HeaderSection = () => {
           }`}
         >
           <div className="pt-4 pb-6 space-y-3">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-green-600 font-medium border-b-2 border-green-600"
-                  : "block text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200"
-              }
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-green-600 font-medium border-b-2 border-green-600"
-                  : "block text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200"
-              }
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-green-600 font-medium border-b-2 border-green-600"
-                  : "block text-gray-700 font-medium hover:text-green-600 hover:border-b-2 hover:border-green-600 transition-colors duration-200"
-              }
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Services
-            </NavLink>
+            <NavLink to="/" end className={mobileNavLinkStyle} onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
+            <NavLink to="/about" className={mobileNavLinkStyle} onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
+            <NavLink to="/services" className={mobileNavLinkStyle} onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
+            <NavLink to="/gallery" className={mobileNavLinkStyle} onClick={() => setIsMobileMenuOpen(false)}>Gallery</NavLink>
 
             {/* CTA Button for Mobile */}
             <NavLink

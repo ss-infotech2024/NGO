@@ -60,8 +60,8 @@ const EventsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
+    <section ref={sectionRef} className="py-16 mx-4 sm:mx-6 lg:mx-16 ">
+      <div className="">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-bold text-gray-900">Our Events</h2>
           <div className="flex items-center gap-2">
