@@ -22,7 +22,7 @@ import HeroWithSlider from "../components/ui/HeorWithSlider";
 import EventsSection from "../components/ui/EventsSection";
 import MarqueeScroll from "../components/ui/MarqueeScroll";
 import CharityCards from "../components/Charity";
-import Footer from "../components/ui/Footer";
+import Footer from "../components/Footer";
 import BentoGrid from "./BentoGrid";
 import NormalMarquee from "../components/ui/NormalMarquee";
 
@@ -214,7 +214,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
     </div>
   );
 };

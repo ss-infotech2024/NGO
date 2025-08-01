@@ -19,7 +19,7 @@ const About = () => {
      
 
       {/* Hero */}
-\
+
       <section className="mt-14 sm:mx-14 mx-0  sm:rounded-xl rounded-none  bg-green-600 py-20 sm:px-6 lg:px-8">
 
         <div className="container mx-auto text-center max-w-4xl fade-in">
