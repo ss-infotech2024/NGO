@@ -6,6 +6,11 @@ import localImage4 from '../assets/Images/IMG_1242.JPG';
 import localImage5 from '../assets/Images/IMG_1261.PNG';
 import localImage6 from '../assets/Images/IMG_1256.JPG';
 import localImage7 from '../assets/Images/IMG_1255.JPG';
+import localImage18 from '../assets/Images/IndependenceDay.jpg';
+import localImage19 from '../assets/Images/IndependenceDay2.jpg.jpg';
+import localImage20 from '../assets/Images/IndependenceDay3.jpg.jpg';
+import localImage21 from '../assets/Images/IndependenceDay4.jpg';
+
 
 const BentoGrid = () => {
   const gridItems = [
@@ -57,6 +62,24 @@ const BentoGrid = () => {
       description: 'Clean habits for healthy lives',
       className: 'col-span-1 sm:col-span-2 row-span-1',
       image: localImage7,
+    },
+
+   
+
+    {
+      id: 10,
+      title: 'Food Distribution on Independence Day',
+      description: 'Food Distribution on Independence Day',
+      className: 'col-span-1 sm:col-span-1 row-span-2',
+      image: localImage20,
+    },
+
+    {
+      id: 12,
+      title: 'Food Distribution on Independence Day',
+      description: 'Food Distribution on Independence Day',
+      className: 'col-span-1 sm:col-span-2 row-span-2',
+      image: localImage21,
     },
   ];
 

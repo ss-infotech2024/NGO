@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import localImage19 from '../assets/Images/IndependenceDay.jpg';
+import localImage18 from '../assets/Images/IndependenceDay.jpg';
+import Team from '../assets/Images/Team.jpg';
+
 
 import { Button } from "../components/ui/Button";
 import { Card, CardContent } from "../components/ui/Card";
@@ -133,7 +137,7 @@ const Index = () => {
         </div>
 
         <img
-          src="https://jkewtrust.org.in/public/web/assets/images/bg/volunteer.jpg"
+          src={Team}
           alt="Team Member 1"
           className="w-11/12 h-[24rem] bg-cover bg-center rounded-lg mx-auto mb-4 object-cover"
         />

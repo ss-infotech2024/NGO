@@ -8,6 +8,11 @@ import localImage4 from '../assets/Images/IMG_1242.JPG';
 import localImage5 from '../assets/Images/IMG_1261.PNG';
 import localImage6 from '../assets/Images/IMG_1256.JPG';
 import localImage7 from '../assets/Images/IMG_1255.JPG';
+import localImage18 from '../assets/Images/IndependenceDay.jpg';
+import localImage19 from '../assets/Images/IndependenceDay2.jpg.jpg';
+import localImage20 from '../assets/Images/IndependenceDay3.jpg.jpg';
+import localImage21 from '../assets/Images/IndependenceDay4.jpg';
+
 
 const Gallery = () => {
   const [images, setImages] = useState([]);
@@ -49,6 +54,31 @@ const Gallery = () => {
         title: "Elderly Care Program",
         className: "md:col-span-1 md:row-span-1",
       },
+
+      {
+        image: localImage20,
+        title: "Food Distribution on Independence Day",
+        className: "md:col-span-2 md:row-span-2",
+      },
+      
+      {
+        image: localImage18,
+        title: "Food Distribution on Independence Day",
+        className: "md:col-span-2 md:row-span-2",
+      },
+      {
+        image: localImage19,
+        title: "Food Distribution on Independence Day",
+        className: "md:col-span-2 md:row-span-1",
+      },
+
+      {
+        image: localImage21,
+        title: "Food Distribution on Independence Day",
+        className: "md:col-span-2 md:row-span-1",
+      },
+      
+      
     ]);
   }, []);
 
