@@ -1,40 +1,108 @@
-import { Button } from "../components/ui/Button";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "../components/ui/Card";
-import { Input } from "../components/ui/Input";
-import { Label } from "../components/ui/Label";
-import { Textarea } from "../components/ui/Textarea";
+import { Button } from "../components/ui/Button";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../components/ui/Select";
-import { Mail, Phone, MapPin, Clock, MessageSquare, Send } from "lucide-react";
-import { Link } from "react-router-dom";
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  MessageSquare,
+} from "lucide-react";
 import ContactForm from "../components/ui/ContactForm";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Contact = () => {
+  const heroRef = useRef(null);
+  const infoCardsRef = useRef([]);
+  const formRef = useRef(null);
+  const faqCardsRef = useRef([]);
+
+  useEffect(() => {
+    // Hero animation
+    gsap.fromTo(
+      heroRef.current,
+      { y: 80, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+      }
+    );
+
+    // Contact info cards
+    gsap.fromTo(
+      infoCardsRef.current,
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: infoCardsRef.current[0]?.parentNode,
+          start: "top 80%",
+        },
+      }
+    );
+
+    // Contact form
+    gsap.fromTo(
+      formRef.current,
+      { x: 100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 85%",
+        },
+      }
+    );
+
+    // FAQ cards
+    gsap.fromTo(
+      faqCardsRef.current,
+      { scale: 0.9, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: faqCardsRef.current[0]?.parentNode,
+          start: "top 85%",
+        },
+      }
+    );
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-     
-
       {/* Hero Section */}
-      <section className="mt-14 sm:mx-14 mx-0  sm:rounded-xl rounded-none  bg-green-600 py-20 sm:px-6 lg:px-8">
-
-        <div className="container mx-auto text-center max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+      <section className="mt-14 sm:mx-14 mx-0 sm:rounded-xl rounded-none bg-green-600 py-20 sm:px-6 lg:px-8">
+        <div
+          ref={heroRef}
+          className="container mx-auto text-center max-w-4xl"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Get in Touch
           </h1>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Have questions about our platform, need support, or want to partner
-            with us? We'd love to hear from you.
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto">
+            Have questions about our platform, need support, or want to
+            partner with us? We'd love to hear from you.
           </p>
         </div>
       </section>
@@ -50,104 +118,81 @@ const Contact = () => {
               </h2>
 
               <div className="space-y-6">
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
+                {[
+                  {
+                    icon: <Mail className="w-6 h-6 text-green-600" />,
+                    title: "Email Us",
+                    desc: "For general inquiries and support",
+                    info: (
+                      <a
+                        href="mailto:hello@danapaani.org"
+                        className="text-green-600 hover:text-green-700 font-medium"
+                      >
+                        hello@danapaani.org
+                      </a>
+                    ),
+                  },
+                  {
+                    icon: <Phone className="w-6 h-6 text-green-600" />,
+                    title: "Call Us",
+                    desc: "Speak with our support team",
+                    info: (
+                      <a
+                        href="tel:+91-9399345989"
+                        className="text-green-600 hover:text-green-700 font-medium"
+                      >
+                        +91 9399345989
+                      </a>
+                    ),
+                  },
+                  {
+                    icon: <MapPin className="w-6 h-6 text-green-600" />,
+                    title: "Visit Us",
+                    desc: "Our headquarters location",
+                    info: (
+                      <address className="text-green-600 not-italic">
+                        Khandwekar Villa,
+                        <br /> near Lendra Park,
+                        <br /> Ramdaspeth, Nagpur, Maharashtra
+                      </address>
+                    ),
+                  },
+                  {
+                    icon: <Clock className="w-6 h-6 text-green-600" />,
+                    title: "Office Hours",
+                    desc: "When our team is available",
+                    info: (
+                      <div className="text-green-600">
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                        <p>Saturday: 10:00 AM - 4:00 PM EST</p>
+                        <p>Sunday: Closed</p>
+                      </div>
+                    ),
+                  },
+                ].map((item, i) => (
+                  <Card
+                    key={i}
+                    ref={(el) => (infoCardsRef.current[i] = el)}
+                  >
+                    <CardContent className="p-6 flex items-start gap-4">
                       <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-6 h-6 text-green-600" />
+                        {item.icon}
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900 mb-1">
-                          Email Us
+                          {item.title}
                         </h3>
-                        <p className="text-gray-600 mb-2">
-                          For general inquiries and support
-                        </p>
-                        <a
-                          href="mailto:hello@danapaani.org"
-                          className="text-green-600 hover:text-green-700 font-medium"
-                        >
-                          hello@danapaani.org
-                        </a>
+                        <p className="text-gray-600 mb-2">{item.desc}</p>
+                        {item.info}
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Phone className="w-6 h-6 text-green-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900 mb-1">
-                          Call Us
-                        </h3>
-                        <p className="text-gray-600 mb-2">
-                          Speak with our support team
-                        </p>
-                        <a
-                          href="tel:+1-555-0123"
-                          className="text-green-600 hover:text-green-700 font-medium"
-                        >
-                          +91 9399345989
-                        </a>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <MapPin className="w-6 h-6 text-green-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900 mb-1">
-                          Visit Us
-                        </h3>
-                        <p className="text-gray-600 mb-2">
-                          Our headquarters location
-                        </p>
-                        <address className="text-green-600 not-italic">
-                         Khandwekar Villa,
-                         <br /> near Lendra Park,
-                         <br /> Ramdaspeth, Nagpur, Maharashtra 
-                        </address>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Clock className="w-6 h-6 text-green-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900 mb-1">
-                          Office Hours
-                        </h3>
-                        <p className="text-gray-600 mb-2">
-                          When our team is available
-                        </p>
-                        <div className="text-green-600">
-                          <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
-                          <p>Saturday: 10:00 AM - 4:00 PM EST</p>
-                          <p>Sunday: Closed</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
 
             {/* Contact Form */}
-            <div>
+            <div ref={formRef}>
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl font-bold text-gray-900 flex items-center gap-2">
@@ -156,7 +201,7 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
-                 <ContactForm/>
+                  <ContactForm />
                 </CardContent>
               </Card>
             </div>
@@ -167,89 +212,50 @@ const Contact = () => {
       {/* FAQ Quick Links */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="container mx-auto text-center max-w-4xl">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Quick Help</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            Quick Help
+          </h2>
           <p className="text-lg text-gray-600 mb-12">
-            Looking for immediate answers? Check out our most frequently asked
-            questions.
+            Looking for immediate answers? Check out our most frequently
+            asked questions.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="p-6 hover:shadow-md transition-shadow">
-              <CardContent className="p-0 text-center">
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  How do I start a fundraiser?
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Learn the step-by-step process to create your first
-                  fundraising campaign.
-                </p>
-                <Button variant="outline" size="sm">
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 hover:shadow-md transition-shadow">
-              <CardContent className="p-0 text-center">
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  How are donations processed?
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Understand our secure payment processing and fund
-                  distribution.
-                </p>
-                <Button variant="outline" size="sm">
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 hover:shadow-md transition-shadow">
-              <CardContent className="p-0 text-center">
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  What are the fees?
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Transparent information about our platform fees and costs.
-                </p>
-                <Button variant="outline" size="sm">
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
+            {[
+              {
+                title: "How do I start a fundraiser?",
+                desc: "Learn the step-by-step process to create your first fundraising campaign.",
+              },
+              {
+                title: "How are donations processed?",
+                desc: "Understand our secure payment processing and fund distribution.",
+              },
+              {
+                title: "What are the fees?",
+                desc: "Transparent information about our platform fees and costs.",
+              },
+            ].map((item, i) => (
+              <Card
+                key={i}
+                ref={(el) => (faqCardsRef.current[i] = el)}
+                className="p-6 hover:shadow-md transition-shadow"
+              >
+                <CardContent className="p-0 text-center">
+                  <h3 className="font-semibold text-gray-900 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4">{item.desc}</p>
+                  <Button variant="outline" size="sm">
+                    Learn More
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-green-800 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-xl font-bold mb-4">danapaani NGO</div>
-              <div className="flex items-center gap-4">
-                <div className="w-8 h-8 bg-white/20 rounded-full"></div>
-                <div className="w-8 h-8 bg-white/20 rounded-full"></div>
-                <div className="w-8 h-8 bg-white/20 rounded-full"></div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">© 2025danapaani NGO</h4>
-              <div className="space-y-2 text-sm">
-                <p>Privacy Policy</p>
-                <p>Terms of Use</p>
-              </div>
-            </div>
-
-            <div className="md:col-span-2">
-              <p className="text-sm leading-relaxed">
-                Dana Pani is dedicated to fighting hunger and restoring dignity through every meal served. With compassion at our core, we believe that access to food is a basic human right — not a privilege. Join us in our mission to ensure that no one sleeps hungry.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+     
     </div>
   );
 };

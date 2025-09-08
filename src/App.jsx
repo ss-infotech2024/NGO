@@ -4,13 +4,14 @@ import { TooltipProvider } from "./components/ui/Tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
+import Videos from "./pages/Videos";
 
 // Pages
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
-import Gallery from "./pages/Gallery"; // 
+import Gallery from "./pages/Gallery"; //
 import NotFound from "./pages/NotFound";
 
 // Components
@@ -32,8 +33,9 @@ const App = () => (
           <Route path="/gallery" element={<Gallery />} /> {/* ✅ New Route */}
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/videos" element={<Videos />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

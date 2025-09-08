@@ -9,7 +9,7 @@ const NormalMarquee = ({ textColor = "#14532d", bgColor = "#a3e635" }) => {
 
     gsap.to(marquee, {
       x: "-50%", // Move left
-      duration: 10,
+      duration: 18,
       ease: "linear",
       repeat: -1, // Infinite
     });

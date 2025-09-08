@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom"; // ✅ Import Link for navigation
 
 const sliderImages = [
   "https://cdn.pixabay.com/photo/2022/01/31/10/45/poor-6983197_640.jpg",
   "https://kettocdn.gumlet.io/media/campaign/385000/385989/image/609c8ee81cf78.jpeg?w=376&dpr=2.6",
   "https://thelivenagpur.com/wp-content/uploads/2023/10/1665998444_india.jpg",
-
 ];
 
 const HeroWithSlider = () => {
@@ -22,7 +22,9 @@ const HeroWithSlider = () => {
 
   // Manual Navigation
   const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + sliderImages.length) % sliderImages.length
+    );
   };
 
   const goToNextSlide = () => {
@@ -63,8 +65,8 @@ const HeroWithSlider = () => {
       </button>
 
       {/* Foreground Content */}
-      <div className="relative z-10  container mx-auto text-center max-w-4xl text-white">
-        <h1 className="text-4xl -lime-400 md:text-6xl font-bold mb-6">
+      <div className="relative z-10 container mx-auto text-center max-w-4xl text-white">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">
           Great futures are built
           <br />
           with a small charity
@@ -77,13 +79,17 @@ const HeroWithSlider = () => {
           <Button className=" bg-lime-400 text-black hover:bg-gray-200 px-8 py-3 text-lg">
             Donate now
           </Button>
-          <Button
-            variant="outline"
-            className="flex items-center gap-2 border-white text-black px-8 py-3 text-lg"
-          >
-            <Play className="w-5 h-5" />
-            Watch Video
-          </Button>
+
+          {/* ✅ Link to Video Page */}
+          <Link to="/videos">
+            <Button
+              variant="outline"
+              className="flex items-center gap-2 border-white text-black px-8 py-3 text-lg"
+            >
+              <Play className="w-5 h-5" />
+              Watch Video
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
