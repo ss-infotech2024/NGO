@@ -1,87 +1,61 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
+
+const videos = [
+  {
+    id: 1,
+    title: "Our Mission & Vision",
+    description:
+      "Learn about Daanapani's goals and objectives in serving the community.",
+    videoPath:
+      "https://drive.google.com/file/d/1NDxv8WN5UG9HI3zQEW3DwI-VyL_ExGmk/preview",
+  },
+  {
+    id: 2,
+    title: "Community Outreach Programs",
+    description:
+      "See how we're making a difference in local communities through various initiatives.",
+    videoPath:
+      "https://drive.google.com/file/d/1Ry3H0mv2Iu5xNOywbvysO_iCqJakz5ZT/preview",
+  },
+  {
+    id: 3,
+    title: "Volunteer Stories",
+    description:
+      "Hear from our dedicated volunteers about their experiences with Daanapani.",
+    videoPath:
+      "https://drive.google.com/file/d/1Ry3H0mv2Iu5xNOywbvysO_iCqJakz5ZT/preview",
+  },
+  {
+    id: 4,
+    title: "Education Initiatives",
+    description:
+      "Discover our educational programs that empower underprivileged children.",
+    videoPath:
+      "https://drive.google.com/file/d/1iiAOf5ILdklWlORJWbIJzI28KfbWksWB/preview",
+  },
+  {
+    id: 6,
+    title: "Environmental Conservation",
+    description:
+      "See how we're working to protect and preserve our environment.",
+    videoPath:
+      "https://drive.google.com/file/d/1t1xU3Y8J_6-eJyMmnvwPwmLrOUPiI1Oc/preview",
+  },
+  {
+    id: 7,
+    title: "Future Vision",
+    description:
+      "Understand our upcoming projects and long-term sustainability goals.",
+    videoPath:
+      "https://drive.google.com/file/d/1Zx7aGcQU49uuPk8UVxdWNMbWqBmOH6cj/preview",
+    featured: true,
+  },
+];
 
 const Video = () => {
-  const videos = [
-    {
-      id: 1,
-      title: "Our Mission & Vision",
-      description:
-        "Learn about Daanapani's goals and objectives in serving the community.",
-      videoPath: "/src/assets/videos/video1.mp4",
-    },
-    {
-      id: 2,
-      title: "Community Outreach Programs",
-      description:
-        "See how we're making a difference in local communities through various initiatives.",
-      videoPath: "/src/assets/videos/video2.mp4",
-    },
-    {
-      id: 3,
-      title: "Volunteer Stories",
-      description:
-        "Hear from our dedicated volunteers about their experiences with Daanapani.",
-      videoPath: "/src/assets/videos/video3.mp4",
-    },
-    {
-      id: 4,
-      title: "Education Initiatives",
-      description:
-        "Discover our educational programs that empower underprivileged children.",
-      videoPath: "/src/assets/videos/video4.mp4",
-    },
-    {
-      id: 6,
-      title: "Environmental Conservation",
-      description:
-        "See how we're working to protect and preserve our environment.",
-      videoPath: "/src/assets/videos/video6.mp4",
-    },
-    {
-      id: 7,
-      title: "Future Vision",
-      description:
-        "Understand our upcoming projects and long-term sustainability goals.",
-      videoPath: "/src/assets/videos/video7.mp4",
-      featured: true, // Mark this as the featured video
-    },
-  ];
-
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [isVertical, setIsVertical] = useState(false);
 
-  const videoRef = useRef(null);
-  const featuredVideoRef = useRef(null);
-
-  // Find the featured video
   const featuredVideo = videos.find((video) => video.featured);
-
-  const openVideo = (video) => {
-    setSelectedVideo(video);
-    setShowModal(true);
-  };
-
-  const closeVideo = () => {
-    setShowModal(false);
-    setSelectedVideo(null);
-    setIsVertical(false);
-  };
-
-  useEffect(() => {
-    if (videoRef.current) {
-      const checkAspect = () => {
-        if (videoRef.current.videoHeight > videoRef.current.videoWidth) {
-          setIsVertical(true);
-        } else {
-          setIsVertical(false);
-        }
-      };
-      videoRef.current.addEventListener("loadedmetadata", checkAspect);
-      return () =>
-        videoRef.current?.removeEventListener("loadedmetadata", checkAspect);
-    }
-  }, [selectedVideo]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
@@ -109,34 +83,13 @@ const Video = () => {
               Featured Video
             </h2>
             <div className="max-w-4xl mx-auto">
-              <div
-                className="relative rounded-lg overflow-hidden shadow-xl cursor-pointer"
-                onClick={() => openVideo(featuredVideo)}
-              >
-                <video
-                  ref={featuredVideoRef}
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <iframe
                   src={featuredVideo.videoPath}
-                  className="w-full h-auto"
-                  muted
-                  loop
-                  autoPlay
-                  playsInline
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-white bg-opacity-80 rounded-full p-4">
-                    <svg
-                      className="w-12 h-12"
-                      fill="#166534"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                </div>
+                  frameBorder="0"
+                  allowFullScreen
+                  className="w-full h-64 md:h-96"
+                ></iframe>
               </div>
               <div className="mt-6 text-center">
                 <h3 className="text-2xl font-semibold text-gray-800 mb-2">
@@ -145,12 +98,6 @@ const Video = () => {
                 <p className="text-gray-600 max-w-2xl mx-auto">
                   {featuredVideo.description}
                 </p>
-                <button
-                  onClick={() => openVideo(featuredVideo)}
-                  className="mt-4 px-6 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-colors duration-300"
-                >
-                  Watch Full Video
-                </button>
               </div>
             </div>
           </div>
@@ -163,47 +110,28 @@ const Video = () => {
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
             More Stories
           </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {videos
-              .filter((video) => !video.featured) // Exclude the featured video from the gallery
+              .filter((video) => !video.featured)
               .map((video) => (
                 <div
                   key={video.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
-                  onClick={() => openVideo(video)}
+                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
+                  onClick={() => setSelectedVideo(video)}
                 >
-                  <div className="relative">
-                    {/* Video as thumbnail */}
-                    <video
+                  <div className="relative overflow-hidden">
+                    <iframe
                       src={video.videoPath}
-                      className="w-full h-48 object-cover"
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                      <div className="bg-white bg-opacity-80 rounded-full p-4">
-                        <svg
-                          className="w-12 h-12"
-                          fill="#166534"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                    </div>
+                      frameBorder="0"
+                      allowFullScreen
+                      className="w-full h-40 group-hover:scale-105 transition-transform duration-500"
+                    ></iframe>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  <div className="p-4">
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">
                       {video.title}
                     </h3>
-                    <p className="text-gray-600">{video.description}</p>
+                    <p className="text-gray-600 text-sm">{video.description}</p>
                   </div>
                 </div>
               ))}
@@ -212,41 +140,22 @@ const Video = () => {
       </section>
 
       {/* Video Modal */}
-      {showModal && selectedVideo && (
+      {selectedVideo && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-          <div
-            className={`bg-white rounded-lg overflow-hidden ${
-              isVertical ? "max-w-sm" : "max-w-4xl"
-            } w-full`}
-          >
+          <div className="bg-white rounded-lg overflow-hidden max-w-4xl w-full">
             <div className="relative">
               <button
-                onClick={closeVideo}
+                onClick={() => setSelectedVideo(null)}
                 className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 hover:bg-gray-200 transition-colors duration-300"
               >
-                <svg
-                  className="w-6 h-6 text-gray-800"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                ✕
               </button>
-              <video
-                ref={videoRef}
-                controls
-                autoPlay
-                className="w-full h-auto max-h-[80vh] mx-auto"
-              >
-                <source src={selectedVideo.videoPath} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <iframe
+                src={selectedVideo.videoPath}
+                frameBorder="0"
+                allowFullScreen
+                className="w-full h-[70vh]"
+              ></iframe>
             </div>
             <div className="p-6">
               <h3 className="text-2xl font-bold text-gray-800 mb-2">
