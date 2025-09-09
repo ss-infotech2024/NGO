@@ -1,10 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import video1 from "../assets/videos/video1.mp4";
-import video2 from "../assets/videos/video2.mp4";
-import video3 from "../assets/videos/video3.mp4";
-import video4 from "../assets/videos/video4.mp4";
-import video6 from "../assets/videos/video6.mp4";
-import video7 from "../assets/videos/video7.mp4";
 
 const videos = [
   {
@@ -12,46 +6,45 @@ const videos = [
     title: "Our Mission & Vision",
     description:
       "Learn about Daanapani's goals and objectives in serving the community.",
-    videoPath: video1,
+    videoPath: "/videos/video1.mp4",
   },
   {
     id: 2,
     title: "Community Outreach Programs",
     description:
       "See how we're making a difference in local communities through various initiatives.",
-    videoPath: video2,
+    videoPath: "/videos/video2.mp4",
   },
   {
     id: 3,
     title: "Volunteer Stories",
     description:
       "Hear from our dedicated volunteers about their experiences with Daanapani.",
-    videoPath: video3,
+    videoPath: "/videos/video3.mp4",
   },
   {
     id: 4,
     title: "Education Initiatives",
     description:
       "Discover our educational programs that empower underprivileged children.",
-    videoPath: video4,
+    videoPath: "/videos/video4.mp4",
   },
   {
     id: 6,
     title: "Environmental Conservation",
     description:
       "See how we're working to protect and preserve our environment.",
-    videoPath: video6,
+    videoPath: "/videos/video6.mp4",
   },
   {
     id: 7,
     title: "Future Vision",
     description:
       "Understand our upcoming projects and long-term sustainability goals.",
-    videoPath: video7,
+    videoPath: "/videos/video7.mp4",
     featured: true,
   },
 ];
-
 const Video = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [showModal, setShowModal] = useState(false);
