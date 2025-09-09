@@ -43,6 +43,7 @@ const Video = () => {
       description:
         "Understand our upcoming projects and long-term sustainability goals.",
       videoPath: "/src/assets/videos/video7.mp4",
+      featured: true, // Mark this as the featured video
     },
   ];
 
@@ -51,6 +52,10 @@ const Video = () => {
   const [isVertical, setIsVertical] = useState(false);
 
   const videoRef = useRef(null);
+  const featuredVideoRef = useRef(null);
+
+  // Find the featured video
+  const featuredVideo = videos.find((video) => video.featured);
 
   const openVideo = (video) => {
     setSelectedVideo(video);
@@ -96,54 +101,112 @@ const Video = () => {
         </div>
       </section>
 
+      {/* Featured Video Section */}
+      {featuredVideo && (
+        <section className="py-12 px-4 bg-white">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+              Featured Video
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <div
+                className="relative rounded-lg overflow-hidden shadow-xl cursor-pointer"
+                onClick={() => openVideo(featuredVideo)}
+              >
+                <video
+                  ref={featuredVideoRef}
+                  src={featuredVideo.videoPath}
+                  className="w-full h-auto"
+                  muted
+                  loop
+                  autoPlay
+                  playsInline
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-white bg-opacity-80 rounded-full p-4">
+                    <svg
+                      className="w-12 h-12"
+                      fill="#166534"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 text-center">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
+                  {featuredVideo.title}
+                </h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  {featuredVideo.description}
+                </p>
+                <button
+                  onClick={() => openVideo(featuredVideo)}
+                  className="mt-4 px-6 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-colors duration-300"
+                >
+                  Watch Full Video
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Video Gallery */}
       <section className="py-12 px-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-            Our Stories
+            More Stories
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {videos.map((video) => (
-              <div
-                key={video.id}
-                className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
-                onClick={() => openVideo(video)}
-              >
-                <div className="relative">
-                  {/* Video as thumbnail */}
-                  <video
-                    src={video.videoPath}
-                    className="w-full h-48 object-cover"
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white bg-opacity-80 rounded-full p-4">
-                      <svg
-                        className="w-12 h-12"
-                        fill="#166534"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+            {videos
+              .filter((video) => !video.featured) // Exclude the featured video from the gallery
+              .map((video) => (
+                <div
+                  key={video.id}
+                  className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
+                  onClick={() => openVideo(video)}
+                >
+                  <div className="relative">
+                    {/* Video as thumbnail */}
+                    <video
+                      src={video.videoPath}
+                      className="w-full h-48 object-cover"
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white bg-opacity-80 rounded-full p-4">
+                        <svg
+                          className="w-12 h-12"
+                          fill="#166534"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      {video.title}
+                    </h3>
+                    <p className="text-gray-600">{video.description}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {video.title}
-                  </h3>
-                  <p className="text-gray-600">{video.description}</p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>
