@@ -3,11 +3,15 @@ import { Button } from "./Button";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom"; // ✅ Import Link for navigation
 
-const sliderImages = [
-  "https://cdn.pixabay.com/photo/2022/01/31/10/45/poor-6983197_640.jpg",
-  "https://kettocdn.gumlet.io/media/campaign/385000/385989/image/609c8ee81cf78.jpeg?w=376&dpr=2.6",
-  "https://thelivenagpur.com/wp-content/uploads/2023/10/1665998444_india.jpg",
-];
+// ✅ Import local images
+import img1 from "../../assets/Images/IndependenceDay.jpg";
+import img2 from "../../assets/Images/IndependenceDay2.jpg.jpg";
+import img3 from "../../assets/Images/IndependenceDay3.jpg.jpg";
+import img4 from "../../assets/Images/IndependenceDay4.jpg";
+import img5 from "../../assets/Images/hero.jpg";
+
+// ✅ Use them in slider array
+const sliderImages = [img1, img2, img3, img4, img5];
 
 const HeroWithSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,20 +36,20 @@ const HeroWithSlider = () => {
   };
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden h-[37rem] ">
+    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden h-[37rem]">
       {/* Background Slider */}
-      <div className="absolute inset-0 z-0 ">
+      <div className="absolute inset-0 z-0">
         {sliderImages.map((img, index) => (
           <img
             key={index}
             src={img}
             alt="NGO Slide"
-            className={` absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out  ${
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           />
         ))}
-        <div className="absolute inset-0 bg-black opacity-40 " />
+        <div className="absolute inset-0 bg-black opacity-40" />
       </div>
 
       {/* Navigation Buttons */}
@@ -76,7 +80,7 @@ const HeroWithSlider = () => {
           charity is a more easy way
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button className=" bg-lime-400 text-black hover:bg-gray-200 px-8 py-3 text-lg">
+          <Button className="bg-lime-400 text-black hover:bg-gray-200 px-8 py-3 text-lg">
             Donate now
           </Button>
 
