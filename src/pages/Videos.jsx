@@ -1,52 +1,51 @@
 import React, { useState, useRef, useEffect } from "react";
 
+const videos = [
+  {
+    id: 1,
+    title: "Our Mission & Vision",
+    description:
+      "Learn about Daanapani's goals and objectives in serving the community.",
+    videoPath: "/videos/video1.mp4",
+  },
+  {
+    id: 2,
+    title: "Community Outreach Programs",
+    description:
+      "See how we're making a difference in local communities through various initiatives.",
+    videoPath: "/videos/video2.mp4",
+  },
+  {
+    id: 3,
+    title: "Volunteer Stories",
+    description:
+      "Hear from our dedicated volunteers about their experiences with Daanapani.",
+    videoPath: "/videos/video3.mp4",
+  },
+  {
+    id: 4,
+    title: "Education Initiatives",
+    description:
+      "Discover our educational programs that empower underprivileged children.",
+    videoPath: "/videos/video4.mp4",
+  },
+  {
+    id: 6,
+    title: "Environmental Conservation",
+    description:
+      "See how we're working to protect and preserve our environment.",
+    videoPath: "/videos/video6.mp4",
+  },
+  {
+    id: 7,
+    title: "Future Vision",
+    description:
+      "Understand our upcoming projects and long-term sustainability goals.",
+    videoPath: "/videos/video7.mp4",
+    featured: true,
+  },
+];
 const Video = () => {
-  const videos = [
-    {
-      id: 1,
-      title: "Our Mission & Vision",
-      description:
-        "Learn about Daanapani's goals and objectives in serving the community.",
-      videoPath: `${import.meta.env.BASE_URL}videos/video1.mp4`,
-    },
-    {
-      id: 2,
-      title: "Community Outreach Programs",
-      description:
-        "See how we're making a difference in local communities through various initiatives.",
-      videoPath: `${import.meta.env.BASE_URL}videos/video2.mp4`,
-    },
-    {
-      id: 3,
-      title: "Volunteer Stories",
-      description:
-        "Hear from our dedicated volunteers about their experiences with Daanapani.",
-      videoPath: `${import.meta.env.BASE_URL}videos/video3.mp4`,
-    },
-    {
-      id: 4,
-      title: "Education Initiatives",
-      description:
-        "Discover our educational programs that empower underprivileged children.",
-      videoPath: `${import.meta.env.BASE_URL}videos/video4.mp4`,
-    },
-    {
-      id: 6,
-      title: "Environmental Conservation",
-      description:
-        "See how we're working to protect and preserve our environment.",
-      videoPath: `${import.meta.env.BASE_URL}videos/video6.mp4`,
-    },
-    {
-      id: 7,
-      title: "Future Vision",
-      description:
-        "Understand our upcoming projects and long-term sustainability goals.",
-      videoPath: `${import.meta.env.BASE_URL}videos/video7.mp4`,
-      featured: true,
-    },
-  ];
-
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isVertical, setIsVertical] = useState(false);
