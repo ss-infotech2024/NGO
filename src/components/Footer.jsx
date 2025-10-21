@@ -48,6 +48,19 @@ function Footer() {
           </div>
 
         </div>
+
+        {/* Designed & Developed by */}
+        <div className="mt-10 text-center text-sm border-t border-white/20 pt-6">
+          Designed & Developed by{' '}
+          <a
+            href="https://www.linkedin.com/in/tejas-khope/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-yellow-300 font-semibold hover:underline"
+          >
+            Tejas Khope
+          </a>
+        </div>
       </div>
     </div>
   );
